@@ -1,44 +1,27 @@
-﻿using Aircompany.Models;
+﻿using System.Text.Json;
+using Aircompany.Models;
 
 namespace Aircompany.Planes
 {
     public class MilitaryPlane : Plane
     {
-        public MilitaryType _type;
+        public MilitaryType PlaneType { get; set; }
 
-        public MilitaryPlane(string model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType type)
+        public MilitaryPlane(string model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType militaryType)
             : base(model, maxSpeed, maxFlightDistance, maxLoadCapacity)
         {
-            _type = type;
+            PlaneType = militaryType;
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(MilitaryPlane plane)
         {
-            var plane = obj as MilitaryPlane;
-            return plane != null &&
-                   base.Equals(obj) &&
-                   _type == plane._type;
+            bool isEqual = base.Equals(plane) && PlaneType == plane.PlaneType;
+            return isEqual;
         }
-
-        public override int GetHashCode()
-        {
-            var hashCode = 1701194404;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + _type.GetHashCode();
-            return hashCode;
-        }
-
-        public MilitaryType PlaneTypeIs()
-        {
-            return _type;
-        }
-
 
         public override string ToString()
         {
-            return base.ToString().Replace("}",
-                    ", type=" + _type +
-                    '}');
+            return JsonSerializer.Serialize(this);
         }        
     }
 }

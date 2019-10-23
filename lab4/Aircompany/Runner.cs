@@ -1,7 +1,7 @@
-﻿using Aircompany.Models;
-using Aircompany.Planes;
+﻿using Aircompany.Planes;
 using System;
 using System.Collections.Generic;
+using Aircompany.Models;
 
 namespace Aircompany
 {
@@ -25,16 +25,16 @@ namespace Aircompany
     };
         public static void Main(string[] args)
         {
-            Airport airport = new Airport(planes);
-            Airport militaryAirport = new Airport(airport.GetMilitaryPlanes());
-            Airport passengerAirport = new Airport(airport.GetPassengersPlanes());
+            var airport = new Airport(planes);
+            var militaryAirport = new Airport(airport.MilitaryPlanes);
+            var passengerAirport = new Airport(airport.PassengerPlanes);
             Console.WriteLine(militaryAirport
                               .SortByMaxDistance()
                               .ToString());
             Console.WriteLine(passengerAirport
                               .SortByMaxSpeed()
                               .ToString());
-            Console.WriteLine(passengerAirport.GetPassengerPlaneWithMaxPassengersCapacity());           
+            Console.WriteLine(passengerAirport.GetPassengerPlaneWithMaxPassengersCapacity());
         }
     }
 }
