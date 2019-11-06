@@ -7,14 +7,14 @@ namespace Lab3
     public class TriangleTest
     {
         [Test]
-        public void Test1_True()
+        public void CorrectTriangleTest()
         {
             bool expected = Triangle.IsExists(1, 1, 1);
             Assert.IsTrue(expected);
         }
 
         [TestCase(200, 1, 300)]
-        public void Test2_False(float a, float b, float c)
+        public void IncorrectTriangleTest(float a, float b, float c)
         {
             bool expected = Triangle.IsExists(a, b, c);
             Assert.IsTrue(!expected);
@@ -31,7 +31,7 @@ namespace Lab3
         [TestCase(234, 2301, 200, ExpectedResult = false)]
         [TestCase(776, 221, 200, ExpectedResult = false)]
         [TestCase(133, 2275, 32, ExpectedResult = false)]
-        public bool Test3_MultiCase(float a, float b, float c)
+        public bool MultiCaseTrinagleTestSequence(float a, float b, float c)
         {
             bool expected = Triangle.IsExists(a, b, c);
             return expected;
