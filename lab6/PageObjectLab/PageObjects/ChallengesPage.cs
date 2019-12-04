@@ -23,10 +23,10 @@ namespace PageObjectLab.PageObjects
             return menuItem.Count;
         }
 
-        public int GetCountMenuItemActive()
+        public bool IsChallengesMenuItemActive()
         {
             var menuItem = driver.FindElements(By.CssSelector(menuItemActiveSelector));
-            return menuItem.Count;
+            return menuItem.Count > 0;
         }
 
         public int GetCountProducts()
@@ -37,14 +37,12 @@ namespace PageObjectLab.PageObjects
 
         public bool CheckExistAllElements()
         {
-            return GetCountMenuCategory() > 0 && GetCountProducts() > 0 && GetCountMenuItemActive() > 0;
+            return GetCountMenuCategory() > 0 && GetCountProducts() > 0 && IsChallengesMenuItemActive();
         }
 
         public void GoToPage()
         {
             driver.Navigate().GoToUrl(homeUrl);
-            var menuItem = driver.FindElement(By.CssSelector(menuItemSelector));
-            menuItem.Click();
         }
     }
 }

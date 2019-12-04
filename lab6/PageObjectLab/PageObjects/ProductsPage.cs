@@ -10,8 +10,9 @@ namespace PageObjectLab.PageObjects
     public class ProductsPage
     {
         private IWebDriver driver;
-        private string homeUrl = "https://amasty.com/magento-2-extensions.html";
+        private string homeUrl = "https://amasty.com/";
         private string currencySelector = ".currency-list a[title='Euro']";
+        private string menuItemSelector = "#main-sidebar .item-wrapper:nth-child(2) > .item";
         private string priceBoxSelector = ".module:nth-child(1) .price";
 
         public ProductsPage(IWebDriver driver)
@@ -37,6 +38,8 @@ namespace PageObjectLab.PageObjects
         public void GoToPage()
         {
             driver.Navigate().GoToUrl(homeUrl);
+            var menuItem = driver.FindElement(By.CssSelector(menuItemSelector));
+            menuItem.Click();
         }
     }
 }

@@ -25,8 +25,11 @@ namespace PageObjectLab
         [Test]
         public void Change—urrencyOnProductPage()
         {
+            var HomePage = new HomePage(driver);
+            HomePage.GoToPage();
+            HomePage.GoWithMenu(2);
+
             var productsPage = new ProductsPage(driver);
-            productsPage.GoToPage();
             float oldPrice = productsPage.getPriceProducts();
             productsPage.Change—urrency();
             float newPrice =  productsPage.getPriceProducts();
@@ -37,8 +40,11 @@ namespace PageObjectLab
         [Test]
         public void CheckChallengesPage()
         {
+            var HomePage = new HomePage(driver);
+            HomePage.GoToPage();
+            HomePage.GoWithMenu(5);
+
             var challengesPage = new ChallengesPage(driver);
-            challengesPage.GoToPage();
             var existAllElements = challengesPage.CheckExistAllElements();
             Assert.IsTrue(existAllElements);
         }
