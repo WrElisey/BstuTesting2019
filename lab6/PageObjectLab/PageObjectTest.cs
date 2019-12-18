@@ -22,31 +22,6 @@ namespace PageObjectLab
             driver.Close();
         }
 
-        [Test]
-        public void Change—urrencyOnProductPage()
-        {
-            var HomePage = new HomePage(driver);
-            HomePage.GoToPage();
-            HomePage.GoWithMenu(2);
-
-            var productsPage = new ProductsPage(driver);
-            float oldPrice = productsPage.getPriceProducts();
-            productsPage.Change—urrency();
-            float newPrice =  productsPage.getPriceProducts();
-
-            Assert.IsTrue(oldPrice != newPrice);
-        }
-
-        [Test]
-        public void CheckChallengesPage()
-        {
-            var HomePage = new HomePage(driver);
-            HomePage.GoToPage();
-            HomePage.GoWithMenu(5);
-
-            var challengesPage = new ChallengesPage(driver);
-            var existAllElements = challengesPage.CheckExistAllElements();
-            Assert.IsTrue(existAllElements);
-        }
+      
     }
 }
